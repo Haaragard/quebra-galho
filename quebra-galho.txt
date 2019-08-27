@@ -28,3 +28,4 @@ O sistema de buscas será realizado inicialmente por Nomes de Freelances e categ
 3. Links do projeto:
    1. https://github.com/Haaragard/quebra-galho
    2. https://drive.google.com/open?id=1ubKYzwxk304QS2lQRwxkaITU34poVJlf
+   3. http://zavoloklom.github.io/material-design-iconic-font/icons.html#map -> ícones
