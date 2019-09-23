@@ -1,13 +1,47 @@
-import styled from 'styled-components/native';
+import React from 'react';
 
-export const Container = styled.View`
-    flex: 1;
-`;
+import { StyleSheet } from 'react-native';
 
-export const Title = styled.Text``;
+export default Styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#CCC',
+    },
 
-export const Form = styled.View``;
+    subHeader: {
+        height: 60,
+        backgroundColor: "#FFF",
+        paddingHorizontal: 20,
+        paddingTop: 20,
+        flexDirection: 'center',
+    },
 
-export const Input = styled.TextInput``;
 
-export const Submit = styled.TouchableOpacity``;
+    box: {
+        flex: 1,
+        height: 100,
+        backgroundColor: '#666',
+        borderColor: '#999',
+        borderWidth: 5,
+        margin: 10,
+    }
+
+});
+
+
+
+
+
+// import styled from 'styled-components/native';
+// 
+// export const Container = styled.View`
+    /* flex: 1; */
+// `;
+// 
+// export const Title = styled.Text``;
+// 
+// export const Form = styled.View``;
+// 
+// export const Input = styled.TextInput``;
+// 
+// export const Submit = styled.TouchableOpacity``;
