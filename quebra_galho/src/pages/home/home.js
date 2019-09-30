@@ -1,51 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { View, Text, Button } from 'react-native';
 
-import { View, ScrollView, Button, Text } from 'react-native';
-import Styles from './styles';
-// import {
-    // Container, Title, Form, Input, Submit,
-// } from './styles';
+import { styles } from '../../styles/DefaultStyles';
 
-// const Home = ({ navigation }) => (
-//     <Container>
-//         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', flexDirection: "row", }}>
-//             <Button
-//                 color="#1AA3FF"
-//                 title="Categorias"
-//                 onPress={() => navigation.navigate('Categorias') }
-//             />
-//             <Button
-//                 color="#1AA3FF"
-//                 title="Login"
-//                 onPress={() => navigation.navigate('Login') }
-//             />
-//             <Button
-//                 color="#1AA3FF"
-//                 title="Cadastrar"
-//                 onPress={() => navigation.navigate('Cadastrar') }
-//             />
-//         </View>
-        
-//         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//             <Text>Home ;D</Text>
-//             <Button 
-//                 title="Ir para About"
-//                 onPress={() => navigation.navigate('About') }
-//             />
-//         </View>
-//     </Container>
-// );
+export default class Home extends Component {
+    static navigationOptions = {
+        title: 'Home',
+    };
 
-const Home = ({ navigation }) => (
-    <View style={Styles.container}>
-        <View style={Styles.box}></View>
-        <View style={Styles.box}></View>
-        <View style={Styles.box}></View>
-    </View>
-);
-
-Home.navigationOptions = {
-  title: 'Home',
+    render() {
+        return (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <Text>Home Screen</Text>
+                <Button
+                    title = 'Login'
+                    onPress = {() => this.props.navigation.navigate('Login')}
+                />
+                <Button
+                    title = 'Cadastro'
+                    onPress = {() => this.props.navigation.navigate('Cadastro')}
+                />
+            </View>
+        )
+    }
 }
-
-export default Home;
