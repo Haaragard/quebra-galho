@@ -7,4 +7,5 @@ yarn add react-native-gesture-handler
 yarn add react-navigation
 yarn add @react-navigation/core react-navigation-stack
 yarn add @react-navigation/core react-navigation-tabs
+yarn add @react-navigation/core react-navigation-drawer
 
