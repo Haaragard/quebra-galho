@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import { stylesMenu } from './styles/DefaultStyles';
 
 import Home from './pages/home/Home';
-import Cadasro from './pages/cadastro/Cadastro';
+import Cadastro from './pages/cadastro/Cadastro';
 import Login from './pages/login/Login';
+import LoadingScreen from './pages/LoadingScreen'
+// import AuthLoadingScreen from './pages/AuthLoadingScreen';
+// import SignInScreen from './pages/SignInScreen';
+// import HomeScreen from './pages/SignInScreen';
 
 export default class Routes extends Component {
     render() {
@@ -16,24 +21,37 @@ export default class Routes extends Component {
     }
 }
 
-const AppNavigator = createStackNavigator(
+const AppNavigator = createDrawerNavigator(
     {
         Home: { screen: Home },
-        Cadastro: { screen: Cadasro },
-        Login: { screen: Login },
     },
     {
         initialRouteName: 'Home',
-        defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: stylesMenu.headerStyle.backgroundColor,
-            },
-            headerTintColor: stylesMenu.headerTintColor,
-            headerTitleStyle: {
-                fontWeight: stylesMenu.headerTitleStyle.fontWeight,
-            },
-        },
+        drawerBackgroundColor: stylesMenu.backgroundColor,
+        drawerPosition: 'left',
+        drawerType: 'front',
     }
 );
 
-const AppContainer = createAppContainer(AppNavigator);
+const AuthStack = createStackNavigator(
+    {
+        Login: { screen: Login },
+        Cadastro: { screen: Cadastro },
+    },
+    {
+        initialRouteName: 'Login',
+    }
+);
+
+const AppContainer = createAppContainer(
+    createSwitchNavigator(
+        {
+            LoadingScreen: LoadingScreen,
+            App: AppNavigator,
+            Auth: AuthStack,
+        },
+        {
+            initialRouteName: 'LoadingScreen',
+        }
+    )
+);

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Touchable, Button } from 'react-native';
 
 import { styles } from '../../styles/DefaultStyles';
 
@@ -10,15 +10,26 @@ export default class Home extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Home Screen</Text>
-                <Button
+            <View style={styles.content}>
+                <View tyle={styles.appHeader}>
+                    {/* < */}
+                </View>
+                <View>
+                    
+                </View>
+                <Text>e</Text>
+                {/* <Button
                     title = 'Login'
                     onPress = {() => this.props.navigation.navigate('Login')}
                 />
                 <Button
                     title = 'Cadastro'
                     onPress = {() => this.props.navigation.navigate('Cadastro')}
+                /> */}
+
+                <Button
+                    title = 'Login'
+                    onPress = {() => this.props.navigation.navigate('Auth')}
                 />
             </View>
         )

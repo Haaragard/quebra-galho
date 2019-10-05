@@ -1,9 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const stylesMenu = {
-    headerStyle: {
-        backgroundColor: '#1AA3FF',
-    },
+    backgroundColor: '#1AA3FF',
     headerTintColor: '#fff',
     headerTitleStyle: {
         fontWeight: 'bold',
@@ -11,15 +9,31 @@ export const stylesMenu = {
 };
 
 export const styles = StyleSheet.create({
+    appView: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
+    appHeader: {
+        margin: 0,
+        backgroundColor: '#000',
+        height: 50,
+        marginBottom: 10,
+    },
     content: {
         flex: 1,
-        alignItems: 'center',
         backgroundColor: '#fff',
+    },
+    contentScrollView: {
+        flexGrow: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
     },
     groupText: {
         flex: 1,
         marginTop: 20,
         marginBottom: 20,
+        width: '70%',
+        textAlign: 'left',
     },
     primaryGreatTitle: {
         fontSize: 36,
@@ -38,7 +52,7 @@ export const styles = StyleSheet.create({
 
 export const formStyles = StyleSheet.create({
     form: {
-        flex: 2,
+        flex: 1,
         width: '70%',
     },
     inputGroup: {
@@ -52,12 +66,12 @@ export const formStyles = StyleSheet.create({
     labelInput: {
         fontSize: 16,
         marginBottom: 10,
+        color: '#4A4A4A',
     },
     borderInputText: {
-        flex: 1,
         height: 40,
         borderWidth: 1,
-        borderColor: '#000',
+        borderColor: '#5F5F5F',
         borderRadius: 5,
     },
     inputText: {
@@ -66,10 +80,13 @@ export const formStyles = StyleSheet.create({
     },
     btGroup: {
         flex: 1,
-
+        alignItems: 'center',
+        marginTop: 20,
+        marginBottom: 20,
     },
     btSubmit: {
         flex: 1,
+        width: 200,
     },
     btCancel: {
 
@@ -78,3 +95,7 @@ export const formStyles = StyleSheet.create({
 
     },
 });
+
+export const colors = {
+    placeHolderTextColor: '#C1C1C1',
+};
