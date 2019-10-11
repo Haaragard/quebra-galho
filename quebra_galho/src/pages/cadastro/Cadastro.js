@@ -1,19 +1,70 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, TextInput, Button } from 'react-native';
-
+import { View, ScrollView, Text, TextInput, TouchableOpacity, Button, ToastAndroid } from 'react-native';
 import { styles, formStyles, colors } from '../../styles/DefaultStyles';
+import Icon from 'react-native-vector-icons/Entypo';
+
+
+const showPassIcon = <Icon name="eye" size={30} color="#000" style={formStyles.btnRightInput}/>;
+const hidePassIcon = <Icon name="eye-with-line" size={30} color="#000" style={formStyles.btnRightInput}/>;
 
 export default class Cadastro extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputNome: '',
-            inputEmail: '',
-            inputCpf: '',
-            inputSenha: '',
-            inputConfirmarSenha: '',
+            nome: '',
+            email: '',
+            cpf: '',
+            password: '',
+            passwordConfirm: '',
+            showPass: false,
+            showPassConfirm: false,
         };
     }
+
+    handleNomeChange = (nome) => {
+        this.setState({ nome });
+    };
+
+    handleEmailChange = (email) => {
+        this.setState({ email });
+    };
+
+    handleCpfChange = (cpf) => {
+        this.setState({ cpf });
+    };
+
+    handlePasswordChange = (password) => {
+        this.setState({ password });
+    };
+
+    handlePasswordConfirmChange = (passwordConfirm) => {
+        this.setState({ passwordConfirm });
+    };
+
+    handleShowPass = () => {
+        this.setState({ showPass: !this.state.showPass });
+    }
+
+    handleShowConfirmPass = () => {
+        this.setState({ showConfirmPass: !this.state.showConfirmPass });
+    }
+
+    validationPass = (password, passwordConfirm) => {
+        if(password === passwordConfirm) {
+            return true;
+        } else {
+            ToastAndroid.show('Senhas não coincidem! ' + password + ' ' + passwordConfirm, ToastAndroid.SHORT);
+            return false;
+        }
+    }
+
+    pressBtnCadastrar = () => {
+        if(this.validationPass(this.state.password, this.state.passwordConfirm)) {
+            ToastAndroid.show('bacon', ToastAndroid.SHORT);
+        }
+    }
+    
+
     static navigationOptions = {
         title: 'Cadastro',
     };
@@ -37,6 +88,8 @@ export default class Cadastro extends Component {
                                     maxLength= {40}
                                     autoCapitalize= 'words'
                                     autoCompleteType= 'name'
+                                    onChangeText= {this.handleNomeChange}
+                                    value= {this.state.nome}
                                 />
                             </View>
                         </View>
@@ -50,6 +103,8 @@ export default class Cadastro extends Component {
                                     maxLength= {40}
                                     autoCapitalize= 'none'
                                     autoCompleteType= 'email'
+                                    onChangeText= {this.handleEmailChange}
+                                    value= {this.state.email}
                                 />
                             </View>
                         </View>
@@ -63,6 +118,8 @@ export default class Cadastro extends Component {
                                     maxLength= {30}
                                     autoCapitalize= 'none'
                                     autoCompleteType= 'off'
+                                    onChangeText= {this.handleCpfChange}
+                                    value= {this.state.cpf}
                                 />
                             </View>
                         </View>
@@ -76,8 +133,15 @@ export default class Cadastro extends Component {
                                     maxLength= {30}
                                     autoCapitalize= 'none'
                                     autoCompleteType= 'password'
-                                    secureTextEntry={true}
+                                    secureTextEntry={this.state.showPass}
+                                    onChangeText= {this.handlePasswordChange}
+                                    value= {this.state.password}
                                 />
+                                <TouchableOpacity
+                                    onPress= {this.handleShowPass}
+                                >
+                                    {(this.state.showPass) ? showPassIcon : hidePassIcon}
+                                </TouchableOpacity>
                             </View>
                         </View>
                         <View style={formStyles.inputGroupField}>
@@ -90,15 +154,22 @@ export default class Cadastro extends Component {
                                     maxLength= {30}
                                     autoCapitalize= 'none'
                                     autoCompleteType= 'password'
-                                    secureTextEntry={true}
+                                    secureTextEntry={this.state.showConfirmPass}
+                                    onChangeText= {this.handlePasswordConfirmChange}
+                                    value= {this.state.passwordConfirm}
                                 />
+                                <TouchableOpacity
+                                    onPress= {this.handleShowConfirmPass}
+                                >
+                                    {(this.state.showConfirmPass) ? showPassIcon : hidePassIcon}
+                                </TouchableOpacity>
                             </View>
                         </View>
                         <View style={formStyles.btGroup}>
                             <View style={formStyles.btSubmit}>
                                 <Button
                                     title= 'Criar conta'
-                                    onPress= {() => console.warn('Realizando Cadastro.')}
+                                    onPress= {this.pressBtnCadastrar}
                                 />
                             </View>
                         </View>

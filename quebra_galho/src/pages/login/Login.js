@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, TextInput, TouchableOpacity, Button, AsyncStorage } from 'react-native';
-
+import { View, ScrollView, Text, TextInput, TouchableOpacity, Button, ToastAndroid } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { styles, formStyles } from '../../styles/DefaultStyles';
+import Icon from 'react-native-vector-icons/Entypo';
+
+const showPassIcon = <Icon name="eye" size={30} color="#000" style={formStyles.btnRightInput}/>;
+const hidePassIcon = <Icon name="eye-with-line" size={30} color="#000" style={formStyles.btnRightInput}/>;
 
 export default class Login extends Component {
     constructor(props) {
@@ -9,6 +13,7 @@ export default class Login extends Component {
         this.state = {
             email: '',
             password: '',
+            showPass: false,
         };
     }
 
@@ -23,6 +28,15 @@ export default class Login extends Component {
     handleCreateAccountPress = () => {
         this.props.navigation.navigate('Cadastro');
     };
+
+    handleShowPass = () => {
+        this.setState({ showPass: !this.state.showPass });
+    }
+
+    pressBtnLogin = () => {
+        ToastAndroid.show(this.state, ToastAndroid.SHORT);
+        this._signInAsync;
+    }
 
     _signInAsync = async () => {
         await AsyncStorage.setItem('userToken', 'abc');
@@ -52,9 +66,10 @@ export default class Login extends Component {
                                     maxLength= {40}
                                     autoCapitalize= 'none'
                                     autoCompleteType= 'email'
+                                    onChangeText= {this.handleEmailChange}
+                                    value= {this.state.email}
                                 />
                             </View>
-                            
                         </View>
                         <View style={formStyles.inputGroupField}>
                             <Text style={formStyles.labelInput}>Senha:</Text>
@@ -66,8 +81,15 @@ export default class Login extends Component {
                                     maxLength= {30}
                                     autoCapitalize= 'none'
                                     autoCompleteType= 'password'
-                                    secureTextEntry={true}
+                                    secureTextEntry={this.state.showPass}
+                                    onChangeText= {this.handlePasswordChange}
+                                    value= {this.state.password}
                                 />
+                                <TouchableOpacity
+                                    onPress= {this.handleShowPass}
+                                >
+                                    {(this.state.showPass) ? showPassIcon : hidePassIcon}
+                                </TouchableOpacity>
                             </View>
                         </View>
                     </View>
@@ -82,7 +104,7 @@ export default class Login extends Component {
                         <View style={formStyles.btSubmit}>
                             <Button
                                 title= 'Entrar'
-                                onPress= {() => this._signInAsync()}
+                                onPress= {() => this.pressBtnLogin}
                             />
                         </View>
                     </View>

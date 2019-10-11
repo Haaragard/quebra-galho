@@ -8,7 +8,7 @@ import { stylesMenu } from './styles/DefaultStyles';
 import Home from './pages/home/Home';
 import Cadastro from './pages/cadastro/Cadastro';
 import Login from './pages/login/Login';
-import LoadingScreen from './pages/LoadingScreen'
+import LoadingScreen from './pages/LoadingScreen';
 // import AuthLoadingScreen from './pages/AuthLoadingScreen';
 // import SignInScreen from './pages/SignInScreen';
 // import HomeScreen from './pages/SignInScreen';
@@ -51,7 +51,7 @@ const AppContainer = createAppContainer(
             Auth: AuthStack,
         },
         {
-            initialRouteName: 'LoadingScreen',
+            initialRouteName: 'Auth',
         }
     )
 );

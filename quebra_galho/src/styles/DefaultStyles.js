@@ -73,10 +73,15 @@ export const formStyles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#5F5F5F',
         borderRadius: 5,
+        flexDirection: "row",
     },
     inputText: {
         flex: 1,
         fontSize: 14,
+        height: '100%',
+    },
+    btnRightInput: {
+        marginTop: 2,
     },
     btGroup: {
         flex: 1,
