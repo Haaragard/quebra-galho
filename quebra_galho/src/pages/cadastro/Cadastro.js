@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text, TextInput, TouchableOpacity, Button, ToastAndroid } from 'react-native';
 import { styles, formStyles, colors } from '../../styles/DefaultStyles';
+
+import api from '../../api';
+
 import Icon from 'react-native-vector-icons/Entypo';
+
 
 
 const showPassIcon = <Icon name="eye" size={30} color="#000" style={formStyles.btnRightInput}/>;
@@ -16,10 +20,14 @@ export default class Cadastro extends Component {
             cpf: '',
             password: '',
             passwordConfirm: '',
-            showPass: false,
-            showPassConfirm: false,
+            showPass: true,
+            showPassConfirm: true,
         };
     }
+
+    static navigationOptions = {
+        title: 'Cadastro',
+    };
 
     handleNomeChange = (nome) => {
         this.setState({ nome });
@@ -60,14 +68,28 @@ export default class Cadastro extends Component {
 
     pressBtnCadastrar = () => {
         if(this.validationPass(this.state.password, this.state.passwordConfirm)) {
-            ToastAndroid.show('bacon', ToastAndroid.SHORT);
+            this._store();
         }
     }
     
+    _store = () => {
+        let dataStore = {
+            nome: this.state.nome,
+            email: this.state.email,
+            cpf: this.state.cpf,
+            senha: this.state.password,
+        };
 
-    static navigationOptions = {
-        title: 'Cadastro',
-    };
+        api.post('/usuarios', dataStore)
+        .then(() =>{
+            ToastAndroid.show('Cadastro realizado com sucesso!', ToastAndroid.SHORT);
+        })
+        .catch(() => {
+            ToastAndroid.show('Ocorreu um erro ao tentar realizar o cadastro!', ToastAndroid.SHORT);
+        });
+    }
+
+    
 
     render() {
         return (

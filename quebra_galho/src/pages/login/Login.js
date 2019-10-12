@@ -17,6 +17,10 @@ export default class Login extends Component {
         };
     }
 
+    static navigationOptions = {
+        title: 'Login',
+    };
+
     handleEmailChange = (email) => {
         this.setState({ email });
     };
@@ -43,9 +47,6 @@ export default class Login extends Component {
         this.props.navigation.navigate('App');
     };
     
-    static navigationOptions = {
-        title: 'Login',
-    };
 
     render() {
         return (
