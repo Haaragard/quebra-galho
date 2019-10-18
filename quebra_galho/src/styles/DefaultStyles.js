@@ -104,3 +104,15 @@ export const formStyles = StyleSheet.create({
 export const colors = {
     placeHolderTextColor: '#C1C1C1',
 };
+
+export const drawerStyles = StyleSheet.create({
+    container: {
+
+    },
+    header: {
+
+    },
+    content: {
+
+    },
+});

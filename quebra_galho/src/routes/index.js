@@ -3,15 +3,14 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 
-import { stylesMenu } from './styles/DefaultStyles';
+import { stylesMenu } from '../styles/DefaultStyles';
 
-import Home from './pages/home/Home';
-import Cadastro from './pages/cadastro/Cadastro';
-import Login from './pages/login/Login';
-import LoadingScreen from './pages/LoadingScreen';
-// import AuthLoadingScreen from './pages/AuthLoadingScreen';
-// import SignInScreen from './pages/SignInScreen';
-// import HomeScreen from './pages/SignInScreen';
+import DrawerContent from './drawer';
+
+import Home from '../pages/home';
+import Cadastro from '../pages/cadastro';
+import Login from '../pages/login';
+import LoadingScreen from '../pages/LoadingScreen';
 
 export default class Routes extends Component {
     render() {
@@ -27,7 +26,7 @@ const AppNavigator = createDrawerNavigator(
     },
     {
         initialRouteName: 'Home',
-        drawerBackgroundColor: stylesMenu.backgroundColor,
+        contentComponent: DrawerContent,
         drawerPosition: 'left',
         drawerType: 'front',
     }

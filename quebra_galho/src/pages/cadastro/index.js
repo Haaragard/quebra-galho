@@ -6,8 +6,6 @@ import api from '../../api';
 
 import Icon from 'react-native-vector-icons/Entypo';
 
-
-
 const showPassIcon = <Icon name="eye" size={30} color="#000" style={formStyles.btnRightInput}/>;
 const hidePassIcon = <Icon name="eye-with-line" size={30} color="#000" style={formStyles.btnRightInput}/>;
 
